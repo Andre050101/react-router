@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Form from './components/Form';
-import ArticleList from './pages/ArticleList';
+import ChiSiamo from './pages/ChiSiamo';
 import HomePage from './pages/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -24,6 +24,7 @@ function App() {
       setLoading(false);
     });
   };
+
   //AddArticle
   const addArticle = async (article) => {
     try {
@@ -62,13 +63,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage articles={articles} onRemoveArticle={removeArticle} />} />
         <Route path="/new" element={<Form onAddArticle={addArticle} />} />
+        <Route path="/about" element={<ChiSiamo />} />
       </Routes>
     </BrowserRouter>
-    /*<div className='container'>
-      <h1>Handle Blog's Articles</h1>
-      <Form onAddArticle={addArticle} />
-      <ArticleList articles={articles} onRemoveArticle={removeArticle} />
-    </div>*/
   );
 }
 
