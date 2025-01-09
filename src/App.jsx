@@ -3,6 +3,7 @@ import axios from 'axios';
 import Form from './components/Form';
 import ChiSiamo from './pages/ChiSiamo';
 import HomePage from './pages/HomePage';
+import Navbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage articles={articles} onRemoveArticle={removeArticle} />} />
         <Route path="/new" element={<Form onAddArticle={addArticle} />} />
