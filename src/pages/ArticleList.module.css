@@ -21,8 +21,17 @@ li div h3 {
 
 .btn {
     margin-top: 5px;
+
+}
+
+.btn-delete {
     background-color: rgb(141, 14, 14);
     border-color: rgb(114, 59, 59);
+}
+
+.btn-readMore {
+    background-color: #24eb9fad;
+    border-color: #7fe4a9;
 }
 
 .noArticles {

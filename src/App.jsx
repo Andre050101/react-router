@@ -4,6 +4,7 @@ import Form from './components/Form';
 import ChiSiamo from './pages/ChiSiamo';
 import HomePage from './pages/HomePage';
 import Layout from './pages/Layout';
+import PostDetail from './pages/PostDetail';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
           <Route index element={<HomePage articles={articles} onRemoveArticle={removeArticle} />} />
           <Route path="new" element={<Form onAddArticle={addArticle} />} />
           <Route path="about" element={<ChiSiamo />} />
+          <Route path="posts/:id" element={<PostDetail />} />
         </Route>
       </Routes>
     </BrowserRouter >

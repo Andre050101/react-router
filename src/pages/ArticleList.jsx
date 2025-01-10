@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ArticleList.module.css"
+import { Link } from "react-router-dom";
 
 const ArticleList = ({ articles, onRemoveArticle }) => {
     if (articles.length === 0) {
@@ -25,13 +26,16 @@ const ArticleList = ({ articles, onRemoveArticle }) => {
                                 )}
                                 <p className={styles.content}><strong>Content:</strong> {article.content}</p>
                                 <p><strong>Category:</strong> {article.tags}</p>
+                                <Link to={`/posts/${article.id}`}>
+                                    <button className={`${styles.btn} ${styles['btn-readMore']}`}>Read More</button>
+                                </Link>
                             </div>
-                            <button className={styles.btn} onClick={() => onRemoveArticle(article.id)}>Delete</button>
+                            <button className={`${styles.btn} ${styles['btn-delete']}`} onClick={() => onRemoveArticle(article.id)}>Delete</button>
                         </li>
 
                     ))}
                 </ul>
-            </div>
+            </div >
         </>
 
     );
