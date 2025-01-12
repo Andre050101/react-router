@@ -1,54 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 import Form from './components/Form';
 import ChiSiamo from './pages/ChiSiamo';
 import HomePage from './pages/HomePage';
 import Layout from './pages/Layout';
 import PostDetail from './pages/PostDetail';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { fetchArticles, addArticle, removeArticle } from './api/ArticleOperations';
+import useFetchArticlesEffect from './hooks/UseFetchArticles';
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-
-    fetchArticles();
-  }, []);
-  function fetchArticles() {
-    axios.get('http://localhost:3000/posts').then((response) => {
-      console.log(response.data);
-      setArticles(response.data);
-    }).catch((err) => {
-      setError('Errore durante il recupero degli articoli.');
-    }).finally(() => {
-      setLoading(false);
-    });
-  };
-
-  //AddArticle
-  const addArticle = async (article) => {
-    try {
-      console.log("Dati inviati al backend:", article);
-      const response = await axios.post('http://localhost:3000/posts', article);
-      console.log('Articolo aggiunto:', response.data);
-      setArticles([...articles, response.data]);
-    } catch (err) {
-      console.error('Errore durante l\'aggiunta dell\'articolo:', err);
-      alert("Errore nell'aggiungere l'articolo");
-    }
-  };
-
-  //RemoveArticle
-  const removeArticle = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3000/posts/${id}`);
-      setArticles(articles.filter((article) => article.id !== id));
-    } catch (err) {
-      console.error('Errore durante l\'eliminazione dell\'articolo:', err);
-    }
-  };
+  useFetchArticlesEffect(() => fetchArticles(setArticles, setError, setLoading));
 
   // Render in caso di errore
   if (error) {

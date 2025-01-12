@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import styles from "./PostDetail.module.css"
 
 const PostDetail = () => {
     const { id } = useParams();
@@ -31,17 +32,16 @@ const PostDetail = () => {
             <h1>{post.title}</h1>
             <p><strong>Autore:</strong> {post.author}</p>
             <p><strong>Contenuto:</strong> {post.content}</p>
-            <p><strong>Categoria:</strong> {post.category}</p>
-            {post.tags && <p><strong>Tags:</strong> {post.tags.join(", ")}</p>}
+            <p><strong>Image:</strong></p>
             {post.image && (
                 <div>
                     <img
                         src={`http://localhost:3000${post.image}`}
                         alt={post.title}
-                        style={{ maxWidth: "100%", height: "auto" }}
                     />
                 </div>
             )}
+            <p><strong>Categoria:</strong> {post.tags.join(", ")}</p>
         </div>
     );
 }

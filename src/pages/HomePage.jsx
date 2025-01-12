@@ -1,10 +1,10 @@
 import React from "react";
-import ArticleList from "./ArticleList"; // Importa il componente ArticleList
+import ArticleList from "../components/ArticleList"; // Importa il componente ArticleList
 
 const Homepage = ({ articles, onRemoveArticle }) => {
     return (
         <div>
-            <h1>Handle Blog's Articles</h1>
+            <h1>Post list:</h1>
             <ArticleList articles={articles} onRemoveArticle={onRemoveArticle} />
         </div>
     );

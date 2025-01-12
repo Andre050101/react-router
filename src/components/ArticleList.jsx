@@ -25,7 +25,7 @@ const ArticleList = ({ articles, onRemoveArticle }) => {
                                     />
                                 )}
                                 <p className={styles.content}><strong>Content:</strong> {article.content}</p>
-                                <p><strong>Category:</strong> {article.tags}</p>
+                                <p><strong>Category:</strong> {article.tags.join(", ")}</p>
                                 <Link to={`/posts/${article.id}`}>
                                     <button className={`${styles.btn} ${styles['btn-readMore']}`}>Read More</button>
                                 </Link>
