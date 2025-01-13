@@ -36,12 +36,12 @@ const PostDetail = () => {
             {post.image && (
                 <div>
                     <img
-                        src={`http://localhost:3000${post.image}`}
+                        src={post.image.startsWith("http") ? post.image : `http://localhost:3000${post.image}`}
                         alt={post.title}
                     />
                 </div>
             )}
-            <p><strong>Categoria:</strong> {post.tags.join(", ")}</p>
+            <p><strong>Categoria:</strong> {post.category}</p>
         </div>
     );
 }

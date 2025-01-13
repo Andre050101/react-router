@@ -19,13 +19,13 @@ const ArticleList = ({ articles, onRemoveArticle }) => {
                                 <p><strong>Image:</strong></p>
                                 {article.image && (
                                     <img
-                                        src={`http://localhost:3000${article.image}`}
+                                        src={article.image.startsWith("http") ? article.image : `http://localhost:3000${article.image}`}
                                         alt={article.title}
                                         className={styles.articleImage} // Aggiunto stile
                                     />
                                 )}
                                 <p className={styles.content}><strong>Content:</strong> {article.content}</p>
-                                <p><strong>Category:</strong> {article.tags.join(", ")}</p>
+                                <p><strong>Category:</strong> {article.category}</p>
                                 <Link to={`/posts/${article.id}`}>
                                     <button className={`${styles.btn} ${styles['btn-readMore']}`}>Read More</button>
                                 </Link>

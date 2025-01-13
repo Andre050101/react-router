@@ -31,18 +31,15 @@ function fetchArticles(setArticles, setError, setLoading) {
  * @param {object} article - Dati dell'articolo da aggiungere
  * @returns {Promise<void>}
  */
-async function addArticle(article, setArticles) {
+async function addArticle(article, articles, setArticles) {
     try {
-        console.log("Dati inviati al backend:", article);
-        const response = await axios.post('http://localhost:3000/posts', article);
-        console.log('Articolo aggiunto:', response.data);
-        setArticles([...articles, response.data]);
+        const response = await axios.post("http://localhost:3000/posts", article);
+        setArticles([...articles, response.data]); // Aggiungi il nuovo articolo
+    } catch (error) {
+        console.error("Errore durante l'aggiunta dell'articolo:", error);
+        alert("Errore durante l'aggiunta dell'articolo.");
     }
-    catch (err) {
-        console.error('Errore durante l\'aggiunta dell\'articolo:', err);
-        alert("Errore nell'aggiungere l'articolo");
-    }
-};
+}
 
 
 /*************  ✨ Codeium Command ⭐  *************/
@@ -54,7 +51,7 @@ async function addArticle(article, setArticles) {
 async function removeArticle(id, setArticles) {
     try {
         await axios.delete(`http://localhost:3000/posts/${id}`);
-        setArticles(articles.filter((article) => article.id !== id));
+        setArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
     } catch (err) {
         console.error('Errore durante l\'eliminazione dell\'articolo:', err);
     }
