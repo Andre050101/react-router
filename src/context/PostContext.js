@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { fetchArticles } from "../api/ArticleOperations";
-import axios from "axios";
 
 //Contesto per post
 const PostContext = createContext();
